@@ -1,1 +1,1 @@
-# A Svelte template to use gitpod with vite
+# svelte plotly charts
