@@ -1,5 +1,9 @@
 <script>
 	import Charts from "./Charts.svelte";
+	let isLoaded =false;
+	function loaded(){
+		isLoaded=true;
+	}
 </script>
 
 <svelte:head>
@@ -13,7 +17,9 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 		crossorigin="anonymous"></script>
-	<!-- <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script> -->
+		<script src="https://cdn.plot.ly/plotly-2.11.1.min.js" on:load="{loaded}"></script>
 </svelte:head>
 
+{#if isLoaded}
 <Charts />
+{/if}
