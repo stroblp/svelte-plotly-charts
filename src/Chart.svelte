@@ -5,6 +5,7 @@
     export let chart;
     export let card;
     export let footer;
+    console.log(chart);
 
 
     let dispatch = createEventDispatcher();
