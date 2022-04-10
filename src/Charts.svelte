@@ -11,7 +11,7 @@
             {}
         );
         chartInModal = e.detail.chart;
-        chartInModal.id="modal-plot"
+        chartInModal.id = "modal-plot";
         modal.show();
     }
 </script>
@@ -35,15 +35,16 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-               <Chart  chart={chartInModal} card />
+                {#key chartInModal}
+                    <Chart chart={chartInModal} card />
+                {/key}
             </div>
         </div>
     </div>
 </div>
 
 <style>
-
     #chart-modal.show {
         display: block;
-    }    
+    }
 </style>
