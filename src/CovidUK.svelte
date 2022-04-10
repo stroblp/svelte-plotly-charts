@@ -43,7 +43,7 @@
                             name: key,
                             x: date,
                             y: result.data.map((a) => a[key]),
-                            mode: "lines",
+                            mode: "lines+markers",
                             type: "scatter",
                         },
 
@@ -78,12 +78,40 @@
         });
         dataReady = true;
     };
+    let maps = [
+        {
+            id: "map",
+            title: "UK map - London",
+            data: [
+                {
+                    type: "scattermapbox",
+                    text: ["London"],
+                    lon: [-0.11],
+                    lat: [51.5],
+                    marker: { color: "fuchsia", size: 20 },
+                },
+            ],
+            layout: {
+                height:"300",
+                dragmode: "zoom",
+                mapbox: {
+                    style: "open-street-map",
+                    center: { lat: 51.5, lon: 0 },
+                    zoom: 10,
+                },
+                margin: { r: 0, t: 0, b: 0, l: 0 },
+            },
+            config: { responsive: true, displayModeBar: false },
+        },
+    ];
 
     main();
 </script>
 
 <h1>UK Covid Data</h1>
+
 {#if dataReady}
+    <Charts charts={maps} rowClass="row row-cols-1" footer={false} />
     <Charts {charts} />
 {/if}
 
@@ -91,5 +119,6 @@
     h1 {
         display: flex;
         justify-content: center;
+        color: red;
     }
 </style>

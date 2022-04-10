@@ -14,6 +14,10 @@
             chart: chart,
         });
     }
+    function settings(e){
+        let template =Plotly.makeTemaplate
+        console.log(chart);
+    }
 </script>
 
 {#if chart}
@@ -27,11 +31,19 @@
             </div>
             {#if footer}
                 <div class="card-footer">
-                    <button on:click={openModal}>
-                        <div >
-                            <i class="fas fa-expand-arrows-alt"></i>
-                          </div>
-                    </button>
+                    <div class="footer">
+                        <button on:click={openModal}>
+                            <div >
+                                <i class="fas fa-expand-arrows-alt"></i>
+                              </div>
+                        </button>
+                        <!-- <button on:click={settings}>
+                            <div >
+                                <i class="fas fa-cog"></i>
+                              </div>
+                        </button> -->
+                    </div>
+
                 </div>
             {/if}
         </div>
@@ -39,5 +51,12 @@
         <BaseChart {chart} />
     {/if}
 {/if}
+
+<style>
+    .footer{
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
 
 
