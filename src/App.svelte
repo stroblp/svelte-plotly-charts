@@ -1,25 +1,34 @@
 <script>
-	import Charts from "./Charts.svelte";
-	let isLoaded =false;
-	function loaded(){
-		isLoaded=true;
+	import Exampl1 from "./Exampl1.svelte";
+	import CovidUK from "./CovidUK.svelte";
+	import CovidUk from "./CovidUK.svelte";
+	let isLoaded = false;
+	function loaded() {
+		isLoaded = true;
 	}
 </script>
 
 <svelte:head>
 	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 		rel="stylesheet"
-		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 		crossorigin="anonymous"
 	/>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-		<script src="https://cdn.plot.ly/plotly-2.11.1.min.js" on:load="{loaded}"></script>
+
+	<script
+		src="https://cdn.plot.ly/plotly-2.11.1.min.js"
+		on:load={loaded}></script>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+	/>
 </svelte:head>
 
 {#if isLoaded}
-<Charts />
+	<CovidUk />
 {/if}

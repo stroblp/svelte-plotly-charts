@@ -1,17 +1,16 @@
 <script>
     import { onMount } from "svelte";
 
-    export let data = [];
-    export let layout = {};
-    export let config = {};
-    export let plotID = "";
+    export let chart;
 
     onMount(() => {
-        Plotly.newPlot(document.getElementById(plotID), data, layout, config);
+        Plotly.newPlot(
+            document.getElementById(chart.id),
+            chart.data,
+            chart.layout,
+            chart.config
+        );
     });
 </script>
 
-
-<div class="plot-div" id={plotID} />
-
-
+<div id={chart.id} />

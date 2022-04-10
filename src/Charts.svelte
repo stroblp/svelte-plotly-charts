@@ -1,46 +1,49 @@
 <script>
     import Chart from "./Chart.svelte";
-    const dataSet = [];
-    for (let i = 0; i < 10; i++) {
-        dataSet.push({
-            id: "chart" + i,
-            data: [
-                {
-                    name: "trace 0",
-                    x: [0, 1, 2, 3, 4],
-                    y: [1, 5, 3, 7, 5],
-                    mode: "lines",
-                    type: "scatter",
-                },
+    export let charts;
+    let chartInModal = undefined;
+    let modalVisible = false;
 
-                {
-                    name: "trace B",
-                    x: [1, 2, 3, 4, 5],
-                    y: [4, 0, 4, 6, 8],
-                    mode: "lines+markers",
-                    type: "scatter",
-                },
-            ],
-            layout: {
-                margin: { t: 10 },
-            },
-            config: { responsive: true, displayModeBar: false },
-        });
+    function openModal(e) {
+        modalVisible = true;
+        let modal = new bootstrap.Modal(
+            document.getElementById("chart-modal"),
+            {}
+        );
+        chartInModal = e.detail.chart;
+        chartInModal.id="modal-plot"
+        modal.show();
     }
 </script>
 
 <div class="container-fluid gutter">
     <div class="row row-cols-1 row-cols-md-2 g-2">
-        {#each dataSet as chartData}
+        {#each charts as chart}
             <div class="col">
-                <Chart
-                    data={chartData.data}
-                    layout={chartData.layout}
-                    config={chartData.config}
-                    plotID={chartData.id}
-                    border
-                />
+                <Chart on:modal={openModal} {chart} card footer />
             </div>
         {/each}
     </div>
 </div>
+
+<div
+    id="chart-modal"
+    class="modal fade "
+    class:show={modalVisible}
+    tabindex="-1"
+>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+               <Chart  chart={chartInModal} card />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #chart-modal.show {
+        display: block;
+    }    
+</style>
